@@ -1,4 +1,4 @@
-console.log("Connecting to the app...");
+onsole.log("Connecting to the app...");
 const express = require('express');
 let app = express();
 const {MongoClient,ObjectID} = require('mongodb');
@@ -34,14 +34,20 @@ MongoClient.connect("mongodb://localhost:27017/",(err,db)=>{
 	// 	console.log(docs)
 	// },(err)=> console.log('unable to fetch todos',err))
 
+	// dbo.collection('Todos').find({completed:false}).count().then((count)=>{
+	// 	console.log('Todos count: ',count);
+		
+	// },(err)=> console.log('unable to fetch todos',err))
+
+	
+
 	dbo.collection('Todos').find({completed:false}).count().then((count)=>{
 		console.log('Todos count: ',count);
 		
 	},(err)=> console.log('unable to fetch todos',err))
 
 
-
-	db.close();
+	// db.close();
 });
 
 
