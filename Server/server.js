@@ -14,10 +14,8 @@ app.get('/',(req,res)=>{
 });
 
 app.post('/todos',(req,res)=>{
-	console.log(req.body);
-	let data = req.body;
 	let newTodo = new Todo({
-		text: data.text
+		text: req.body.text
 	});
 	newTodo.save().then(
 		(doc)=>{
@@ -31,6 +29,21 @@ app.post('/todos',(req,res)=>{
 				data: err
 			})
 		});
+});
+
+app.get('/todos',(req,res)=>{
+	Todo.find().then(
+		(todos)=>{
+			res.status(200).send({
+				message: 'Success',
+				data: todos
+			});
+		},(err)=>{
+			res.status(500).send({
+				message: 'Error',
+				data: err
+			})
+		})
 })
 
 app.listen(3000,()=>{
