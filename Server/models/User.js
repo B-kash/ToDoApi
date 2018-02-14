@@ -1,12 +1,11 @@
-const mongoose = require('mongoose');
-let User = mongoose.model('User',{
-	email: {
-		type: String,
-		required: true,
-		trim: true,
-		minlength: 1
-	}
+const {mongoose} = require('../db/mongoose');
+let User = mongoose.model('User', {
+    email: {
+        type: String,
+        required: true,
+        minlength: 1,
+        trim: true
+    }
 });
 
-
-module.export = {User}
+module.exports = {User}
